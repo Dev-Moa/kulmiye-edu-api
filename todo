@@ -31,6 +31,6 @@
 
 - PERMISSIONS
 
-    DONE- Elang,EType,Program =  only admin can CUD 
+    - Elang,EType,Program =  only admin can CUD 
     - Univerities can CRUD programscholarships they have 
     - Univerities can also CRUD enrollments they have 
