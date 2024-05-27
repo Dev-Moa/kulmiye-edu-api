@@ -67,7 +67,7 @@ class UniversityDetailsAPIView(generics.RetrieveUpdateDestroyAPIView):
 # ProgramScholarship
 class ProgramScholarshipAPIView(generics.ListCreateAPIView):
     queryset = ProgramScholarship.objects.all()
-    serializer_class = ProgramScholarship
+    serializer_class = ProgramScholarshipModelSerializer
     permission_classes = [IsAdminOrReadOnly]
 
 class ProgramScholarshipDetailsAPIView(generics.RetrieveUpdateDestroyAPIView):

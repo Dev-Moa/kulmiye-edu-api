@@ -14,10 +14,13 @@ urlpatterns = [
     #Program
     path("program/", views.ProgramAPIView.as_view()),
     path("program/<int:pk>/", views.ProgramDetailsAPIView.as_view()),
-    #University
+    # ProgramScholarship
+    path("scholarship/", views.ProgramScholarshipAPIView.as_view()),
+    path("scholarship/<int:pk>/", views.ProgramDetailsAPIView.as_view()),
+    # University
     path("university/", views.UniversityAPIView.as_view()),
     path("university/<int:pk>/", views.UniversityDetailsAPIView.as_view()),
-    #Enrollment
+    # Enrollment
     path("enroll/", views.EnrollmentAPIView.as_view()),
     path("enroll/<int:pk>/", views.EnrollmentDetailsAPIView.as_view()),
 
