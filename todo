@@ -1,0 +1,36 @@
+============ Kulmiye APi ==============
+
+- SETUP PROJECT
+    DONE- create venv & requirements.txt
+    DONE- install django
+    DONE- setup django 
+    DONE- setup drf installation
+    DONE- create hello world api
+
+- AUTH API
+    DONE- install djoser
+    DONE- install api schema docs
+    DONE- test signup,login,logout
+
+- SETUP MODELS
+    - setup models 
+    - makemigrations and migrate
+    - install pillow for imageupload in models
+
+
+- CRUD VIEWS FOR MODELS
+    DONE- Education Language CRUD
+    DONE- Education Type CRUD
+    DONE- Degree CRUD
+    DONE- Program CRUD
+    DONE- University CRUD
+    DONE- Program scholarship CRUD
+    DONE- Enrollment CRUD
+
+- CUSTOM VIEWS
+
+- PERMISSIONS
+
+    DONE- Elang,EType,Program =  only admin can CUD 
+    - Univerities can CRUD programscholarships they have 
+    - Univerities can also CRUD enrollments they have 
