@@ -34,3 +34,19 @@
     - Elang,EType,Program =  only admin can CUD 
     - Univerities can CRUD programscholarships they have 
     - Univerities can also CRUD enrollments they have 
+
+- Testing API CRUD Functionality
+    DONE- Education Language CRUD
+    DONE- Education Type CRUD
+    DONE- Degree CRUD
+    DONE- Program CRUD
+    DONE- University CRUD
+    DONE- Program scholarship CRUD
+    DONE- Enrollment CRUD
+
+
+
+
+
+- CONNECT TO THE UI
+    DONE- cors headers
