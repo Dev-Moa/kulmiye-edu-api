@@ -30,11 +30,12 @@ SECRET_KEY = env.str('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','https://web-production-41b1.up.railway.app/']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','web-production-41b1.up.railway.app']
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",  # Include this if you need CSRF protection to work on this origin as well
-    "https://web-production-41b1.up.railway.app/"
+    "https://web-production-41b1.up.railway.app",
+    "https://www.web-production-41b1.up.railway.app"
 ]
 
 CORS_ALLOW_CREDENTIALS = True
