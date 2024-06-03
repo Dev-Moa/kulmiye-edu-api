@@ -19,7 +19,8 @@ from django.urls import path,include
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 from rest_framework.routers import DefaultRouter
 from djoser.views import UserViewSet, TokenCreateView
-
+from django.conf import settings
+from django.conf.urls.static import static
 from api.permission import AllowSignupAndLogin
 
 class CustomUserViewSet(UserViewSet):
@@ -47,4 +48,4 @@ urlpatterns = [
     path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     # admin
     path('admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

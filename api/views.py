@@ -1,5 +1,4 @@
-from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework import generics
 from .serializer import ELangModelSerializer,ETypeModelSerializer,DegreeModelSerializer,ProgramModelSerializer,UniversityModelSerializer,EnrollmentModelSerializer,ProgramScholarshipModelSerializer
 from .models import EducationLanguage,EducationType,Degree,Program,University,Enrollment,ProgramScholarship
@@ -58,7 +57,7 @@ class UniversityAPIView(generics.ListCreateAPIView):
     queryset = University.objects.all()
     serializer_class = UniversityModelSerializer
     permission_classes = [IsAdminOrReadOnly]
-
+    parser_classes = [MultiPartParser, FormParser]
 class UniversityDetailsAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = University.objects.all()
     serializer_class = UniversityModelSerializer
