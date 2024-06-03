@@ -61,7 +61,7 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.AllowAny",
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": [ 
         # auth for rest_browserable api 
@@ -164,3 +164,16 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# ________AWS Configuration________________
+AWS_ACCESS_KEY_ID = "AKIA2SGJZI3A2NDI6PXS"
+AWS_SECRET_ACCESS_KEY = "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"
+
+# _________S3 configuration_________________
+
+AWS_STORAGE_BUCKET_NAME ="kulmiye-edu"
+DEFAULT_FILE_STORAGE ='storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_FILE_OVERWRITE = False

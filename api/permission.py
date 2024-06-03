@@ -1,4 +1,15 @@
 from rest_framework.permissions import BasePermission, SAFE_METHODS
+from rest_framework.permissions import BasePermission
+
+
+class AllowSignupAndLogin(BasePermission):
+    def has_permission(self, request, view):
+        if hasattr(view, 'action') and hasattr(view, 'basename'):
+            if view.action in ['create'] and view.basename in ['user', 'token']:
+                return True
+        elif request.method == 'POST' and view.__class__.__name__ == 'CustomTokenCreateView':
+            return True
+        return request.user.is_authenticated
 
 class IsAdminOrReadOnly(BasePermission):
     """

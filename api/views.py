@@ -4,7 +4,7 @@ from rest_framework import generics
 from .serializer import ELangModelSerializer,ETypeModelSerializer,DegreeModelSerializer,ProgramModelSerializer,UniversityModelSerializer,EnrollmentModelSerializer,ProgramScholarshipModelSerializer
 from .models import EducationLanguage,EducationType,Degree,Program,University,Enrollment,ProgramScholarship
 from .permission import IsAdminOrReadOnly
-from rest_framework.permissions import DjangoObjectPermissions,IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 # Create your views here.
 

@@ -17,13 +17,29 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+from rest_framework.routers import DefaultRouter
+from djoser.views import UserViewSet, TokenCreateView
+
+from api.permission import AllowSignupAndLogin
+
+class CustomUserViewSet(UserViewSet):
+    permission_classes = [AllowSignupAndLogin]
+
+class CustomTokenCreateView(TokenCreateView):
+    permission_classes = [AllowSignupAndLogin]
+
+# Define your router
+router = DefaultRouter()
+router.register(r'users', CustomUserViewSet, basename='user')
+
 
 urlpatterns = [
     # app urls
     path('',include('api.urls')), # core app
     path('api-auth/', include('rest_framework.urls')), # restframework
     # djoser
-    path('auth/', include('djoser.urls')), 
+    path('auth/', include(router.urls)),
+    path('auth/token/login/', CustomTokenCreateView.as_view(), name='login'),
     path('auth/', include('djoser.urls.authtoken')), 
     # api docs
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'), # spect for api docs
