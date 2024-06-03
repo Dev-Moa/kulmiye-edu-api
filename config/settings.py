@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+# environ
+import environ
+env =environ.Env()
+environ.Env.read_env()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,15 +25,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%#%5g8fe%1z17j-f3wy^@gx0!i_q%xxcz_u3reny&2x_x@*x7j'
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",  # Include this if you need CSRF protection to work on this origin as well
+
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -124,6 +130,13 @@ DATABASES = {
 }
 
 
+# RALIWAY POSTGRESQL DATABASE ( LIVE )
+
+import dj_database_url
+DATABASES = {
+    'default' : dj_database_url.parse(env.str('DATABASE_URL'))
+}
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -167,12 +180,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # ________AWS Configuration________________
-AWS_ACCESS_KEY_ID = "AKIA2SGJZI3A2NDI6PXS"
-AWS_SECRET_ACCESS_KEY = "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"
+AWS_ACCESS_KEY_ID = env.str('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_ACCESS_KEY')
 
 # _________S3 configuration_________________
 
-AWS_STORAGE_BUCKET_NAME ="kulmiye-edu"
+AWS_STORAGE_BUCKET_NAME = env.str('AWS_STORAGE_BUCKET_NAME')
 DEFAULT_FILE_STORAGE ='storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
