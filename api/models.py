@@ -44,7 +44,7 @@ class University(models.Model):
     images = models.ImageField(upload_to='university', blank=True, null=True)
     programs = models.ManyToManyField(Program, related_name="universities")
     education_types = models.ManyToManyField(EducationType, related_name="universities")
-    education_languages = models.ForeignKey(EducationLanguage, null=True, on_delete=models.DO_NOTHING, related_name="universities")
+    education_languages = models.ManyToManyField(EducationLanguage,related_name="universities")
     content = models.TextField(null=True)
     vision = models.TextField(null=True)
     mission = models.TextField(null=True)
