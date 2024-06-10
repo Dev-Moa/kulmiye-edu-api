@@ -4,7 +4,8 @@ from .serializer import ELangModelSerializer,ETypeModelSerializer,DegreeModelSer
 from .models import EducationLanguage,EducationType,Degree,Program,University,Enrollment,ProgramScholarship
 from .permission import IsAdminOrReadOnly
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-
+from .filters import ProgramScholarshipFilter
+from django_filters.rest_framework import DjangoFilterBackend
 # Create your views here.
 
 
@@ -14,6 +15,7 @@ class ELangAPIView(generics.ListCreateAPIView):
     serializer_class = ELangModelSerializer
     permission_classes = [IsAdminOrReadOnly]
 
+  
 class ELangDetailsAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = EducationLanguage.objects.all()
     serializer_class = ELangModelSerializer
@@ -68,11 +70,16 @@ class ProgramScholarshipAPIView(generics.ListCreateAPIView):
     queryset = ProgramScholarship.objects.all()
     serializer_class = ProgramScholarshipModelSerializer
     permission_classes = [IsAdminOrReadOnly]
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = ProgramScholarshipFilter
+
 
 class ProgramScholarshipDetailsAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = ProgramScholarship.objects.all()
     serializer_class = ProgramScholarshipModelSerializer
     permission_classes = [IsAdminOrReadOnly]
+
+    
 
 # Enrollment
 class EnrollmentAPIView(generics.ListCreateAPIView):
