@@ -41,6 +41,9 @@ class ProgramScholarshipModelSerializer(ModelSerializer):
         fields = "__all__"
 
 class EnrollmentModelSerializer(ModelSerializer):
+    # university = UniversityModelSerializer()
+    # program = ProgramModelSerializer()
+
     class Meta:
         model = Enrollment
         fields = "__all__"
