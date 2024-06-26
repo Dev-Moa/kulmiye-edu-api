@@ -90,12 +90,13 @@ class Enrollment(models.Model):
         ('M', 'Male'),
         ('F', 'Female'),
     )
-    student_name = models.CharField(max_length=150)
+    student_name = models.CharField(max_length=150,null=True)
+    roll_number = models.CharField(max_length=150,null=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=True)
-    address = models.CharField(max_length=255)
+    address = models.CharField(max_length=255,null=True)
     university = models.ForeignKey(University, on_delete=models.CASCADE, related_name="enrollments")
     program = models.ForeignKey(Program, on_delete=models.CASCADE, null=True, related_name="enrollments")
-    phone_number = models.CharField(max_length=20) 
+    phone_number = models.CharField(max_length=20,null=True) 
 
     def __str__(self):
         return self.student_name

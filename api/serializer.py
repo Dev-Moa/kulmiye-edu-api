@@ -1,6 +1,6 @@
 from .models import EducationLanguage, EducationType, Degree, Enrollment, University, Program, ProgramScholarship
 from rest_framework.serializers import ModelSerializer
-
+from rest_framework import serializers
 class ELangModelSerializer(ModelSerializer):
     class Meta:
         model = EducationLanguage
@@ -41,9 +41,16 @@ class ProgramScholarshipModelSerializer(ModelSerializer):
         fields = "__all__"
 
 class EnrollmentModelSerializer(ModelSerializer):
-    # university = UniversityModelSerializer()
-    # program = ProgramModelSerializer()
+    university_id = serializers.PrimaryKeyRelatedField(queryset=University.objects.all(), write_only=True, source='university', )
+    program_id = serializers.PrimaryKeyRelatedField(queryset=Program.objects.filter(program_scholarships__isnull=False).distinct(), write_only=True, source='program', )
 
+    university = UniversityModelSerializer(read_only=True)
+    program = ProgramModelSerializer(read_only=True)
     class Meta:
         model = Enrollment
         fields = "__all__"
+        extra_kwargs = {
+            'university': {'required': False},
+            'program': {'required': False},
+        }
+
