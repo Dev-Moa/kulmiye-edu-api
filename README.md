@@ -1,10 +1,10 @@
-# Kulmiye Edu — API
+# Kulmiye Edu: API
 
-Backend for the Kulmiye Edu platform — a university & scholarship discovery service for Somali students.
+Backend for the Kulmiye Edu platform, a university & scholarship discovery service for Somali students.
 
 ## Background
 
-The backend half of my **first project**, built during my internship — my introduction to production Django, DRF, JWT auth, and cloud deployment.
+The backend half of my **first project**, built during my internship. It was my introduction to production Django, DRF, JWT auth, and cloud deployment.
 
 ## Tech stack
 
