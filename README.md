@@ -2,6 +2,10 @@
 
 Backend for the Kulmiye Edu platform — a university & scholarship discovery service for Somali students.
 
+## Background
+
+The backend half of my **first project**, built during my internship — my introduction to production Django, DRF, JWT auth, and cloud deployment.
+
 ## Tech stack
 
 - **Django 4.2** + **Django REST Framework**
